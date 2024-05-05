@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.13)
+project(VKA)
+
+add_library(vka src/vulkan_abs/instance_creation.c)
+target_include_directories(vka PUBLIC include)
+add_subdirectory(external_libs)
+add_subdirectory(src)
+target_link_libraries(VMAUsage PUBLIC GPUOpen::VulkanMemoryAllocator)
+target_link_libraries(vka PRIVATE GPUOpen::VulkanMemoryAllocator)
+find_package(glfw3 REQUIRED)
+find_package(Vulkan REQUIRED)
+target_link_libraries(vka PRIVATE Vulkan::Vulkan)
+target_link_libraries(vka PRIVATE VMAUsage)
