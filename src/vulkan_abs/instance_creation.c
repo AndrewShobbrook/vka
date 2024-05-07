@@ -18,7 +18,6 @@ VkResult vka_createInstance(vka_InstanceCreateInfo *instance_create_info,
   vkEnumerateInstanceExtensionProperties(NULL, &count, NULL);
   VkExtensionProperties *instance_extensions =
       malloc(count * sizeof(VkExtensionProperties));
-  printf("%p\n", instance_extensions);
   vkEnumerateInstanceExtensionProperties(NULL, &count, instance_extensions);
 
   // Storing found state in bool array
@@ -29,7 +28,9 @@ VkResult vka_createInstance(vka_InstanceCreateInfo *instance_create_info,
       calloc(instance_create_info->pref_extension_count, 1);
 
   for (int i = 0; i < count; i++) {
+    #ifndef NDEBUG
     printf("%s\n", instance_extensions[i].extensionName);
+    #endif /* ifndef NDEBUG */
     for (int j = 0; j < instance_create_info->requ_extension_count; j++) {
       if (strcmp(instance_extensions[i].extensionName,
                  instance_create_info->required_extensions[j]) == 0) {
@@ -81,6 +82,9 @@ VkResult vka_createInstance(vka_InstanceCreateInfo *instance_create_info,
       }
     }
   }
+
+  free(required_extensions);
+  free(preferred_extensions);
 
   VkInstanceCreateInfo create_info = {
       .sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
