@@ -86,15 +86,18 @@ VkResult vka_createInstance(vka_InstanceCreateInfo *instance_create_info,
   free(required_extensions);
   free(preferred_extensions);
 
+  const char* layers[] = {"VK_LAYER_KHRONOS_validation"};
+
   VkInstanceCreateInfo create_info = {
       .sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
       .flags = 0,
       .pNext = NULL,
       .pApplicationInfo = NULL,
-      .enabledLayerCount = 0,
       .enabledExtensionCount =
           instance_create_info->requ_extension_count + found_extension_count,
       .ppEnabledExtensionNames = extensions,
+      .enabledLayerCount = 1,
+      .ppEnabledLayerNames = layers,
   };
 
   return vkCreateInstance(&create_info, NULL, instance);

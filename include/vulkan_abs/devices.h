@@ -5,11 +5,10 @@
 typedef enum vka_QueueConfiguration {
   vka_PREFER_PRESENT_GRAPHICS_QUEUE = 1,
   vka_COMPUTE_GRAPHICS_QUEUE = 1<<1,
-  vka_COMPUTE_TRANSFER_QUEUE = 1<<2,
-  vka_COMPUTE_ONLY_QUEUE = 1<<3,
-  vka_GRAPHICS_ONLY_QUEUE = 1<<4,
-  vka_TRANSFER_ONLY_QUEUE = 1<<5,
-  vka_PRESENT_QUEUE = 1<<6 // Not to be used in configuration. Used to pass back
+  vka_COMPUTE_ONLY_QUEUE = 1<<2,
+  vka_GRAPHICS_ONLY_QUEUE = 1<<3,
+  vka_TRANSFER_ONLY_QUEUE = 1<<4,
+  vka_PRESENT_QUEUE = 1<<5 // Not to be used in configuration. Used to pass back
 } vka_QueueConfiguration;
 
 typedef enum vka_DeviceConfiguration {
@@ -39,3 +38,5 @@ typedef struct {
   uint32_t queue_config;
   uint32_t device_config;
 } vka_DeviceCreateInfo;
+
+vka_DeviceReturn vka_CreateDevices(vka_DeviceCreateInfo *device_create_info, VkInstance instance, VkSurfaceKHR surface);
