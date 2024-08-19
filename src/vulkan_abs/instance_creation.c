@@ -6,6 +6,8 @@
 #include <vulkan/vulkan_core.h>
 #include <vulkan_abs/instance_creation.h>
 
+/* Creates an instance based on the provided instance_create_info */
+
 VkResult vka_createInstance(vka_InstanceCreateInfo *instance_create_info,
                             VkInstance *instance) {
   // Getting instance version

@@ -5,7 +5,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
-vka_SwapchainReturn vka_CreateSwapchain(VkPhysicalDevice phys_device, VkDevice device, GLFWwindow *window, VkSurfaceKHR surface, VkSwapchainKHR old_swapchain) {
+vka_SwapchainReturn vka_CreateSwapchain(VkPhysicalDevice phys_device, VkDevice device,
+                                        GLFWwindow *window, VkSurfaceKHR surface,
+                                        VkSwapchainKHR old_swapchain) {
   vka_SwapchainReturn swap_return = {0};
   uint32_t count;
   vkGetPhysicalDeviceSurfaceFormatsKHR(phys_device, surface, &count, NULL);
@@ -52,7 +54,7 @@ vka_SwapchainReturn vka_CreateSwapchain(VkPhysicalDevice phys_device, VkDevice d
   VkExtent2D extent = {0};
 
   if (surface_capabilities.currentExtent.width == 0xffffffff) {
-    glfwGetFramebufferSize(window, &extent.width, &extent.height);    
+    glfwGetFramebufferSize(window, &extent.width, &extent.height);
   } else {
     extent = surface_capabilities.currentExtent;
   }
@@ -84,7 +86,8 @@ vka_SwapchainReturn vka_CreateSwapchain(VkPhysicalDevice phys_device, VkDevice d
 
   swap_return.images = malloc(swap_return.count * sizeof(VkImage));
 
-  vkGetSwapchainImagesKHR(device, swap_return.swapchain, &swap_return.count, swap_return.images);
+  vkGetSwapchainImagesKHR(device, swap_return.swapchain,
+                          &swap_return.count, swap_return.images);
 
   swap_return.extent = extent;
   swap_return.format = surface_formats[index_in_array];
@@ -114,7 +117,7 @@ VkImageView *vka_CreateSwapchainImageViews(VkDevice device, vka_SwapchainReturn 
         .aspectMask = VK_IMAGE_ASPECT_COLOR_BIT,
         .layerCount = 1,
         .levelCount = 1,
-        .baseMipLevel = 1,
+        .baseMipLevel = 0,
         .baseArrayLayer = 0,
       }
     };

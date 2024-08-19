@@ -4,4 +4,6 @@ project(vka)
 
 add_library(VMAUsage VMAUsage.cpp)
 
+target_sources(vka PRIVATE utils.c)
+
 add_subdirectory(vulkan_abs)

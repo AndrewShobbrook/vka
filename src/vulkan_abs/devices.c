@@ -5,6 +5,8 @@
 #include <vulkan/vulkan_core.h>
 #include <vulkan_abs/devices.h>
 
+/* Selects a physical device based on criteria in device_create_info then creates the Logical Device and queues to go with it */
+
 vka_DeviceReturn vka_CreateDevices(vka_DeviceCreateInfo *device_create_info,
                                    VkInstance instance, VkSurfaceKHR surface) {
   uint32_t device_count;

@@ -13,3 +13,5 @@ typedef struct vka_SwapchainReturn {
 
 
 vka_SwapchainReturn vka_CreateSwapchain(VkPhysicalDevice phys_device, VkDevice device, GLFWwindow* window, VkSurfaceKHR surface, VkSwapchainKHR old_swapchain);
+
+VkImageView *vka_CreateSwapchainImageViews(VkDevice device, vka_SwapchainReturn swap_return);
