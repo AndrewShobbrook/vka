@@ -1,3 +1,4 @@
+#pragma once
 #include <vulkan/vulkan.h>
 
 /* Struct that defines parameters for instance creation */

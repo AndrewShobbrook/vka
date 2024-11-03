@@ -1,3 +1,6 @@
 [submodule "external_libs/VulkanMemoryAllocator"]
 	path = external_libs/VulkanMemoryAllocator
 	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
+[submodule "external_libs/CVec"]
+	path = external_libs/CVec
+	url = https://github.com/AndrewShobbrook/CVec

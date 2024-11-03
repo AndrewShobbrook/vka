@@ -1,3 +1,4 @@
+#pragma once
 #include <vulkan/vulkan.h>
 
 /* Basic RenderPassCreateInfo, only specify the color attachment format and depth attachment format */
